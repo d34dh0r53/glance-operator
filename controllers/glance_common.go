@@ -19,7 +19,11 @@ package controllers
 import (
 	"context"
 	"fmt"
+
 	"github.com/openstack-k8s-operators/lib-common/modules/common/condition"
+
+	"time"
+
 	"github.com/openstack-k8s-operators/lib-common/modules/common/env"
 	"github.com/openstack-k8s-operators/lib-common/modules/common/helper"
 	nad "github.com/openstack-k8s-operators/lib-common/modules/common/networkattachment"
@@ -28,7 +32,30 @@ import (
 	k8s_errors "k8s.io/apimachinery/pkg/api/errors"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-	"time"
+)
+
+// fields to index to reconcile when change
+const (
+	passwordSecretField     = ".spec.secret"
+	caBundleSecretNameField = ".spec.tls.caBundleSecretName"
+	tlsAPIInternalField     = ".spec.tls.api.internal.secretName"
+	tlsAPIPublicField       = ".spec.tls.api.public.secretName"
+)
+
+var (
+<<<<<<< HEAD
+	glanceWatchFields = []string{
+		passwordSecretField,
+	}
+	glanceAPIWatchFields = []string{
+=======
+	allWatchFields = []string{
+>>>>>>> 00e73be ([tlse] tls for GlanceAPI pod configuration)
+		passwordSecretField,
+		caBundleSecretNameField,
+		tlsAPIInternalField,
+		tlsAPIPublicField,
+	}
 )
 
 type conditionUpdater interface {

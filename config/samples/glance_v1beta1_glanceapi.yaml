@@ -19,3 +19,11 @@ spec:
   replicas: 1
   storageRequest: 10G
   secret: glance-secret
+  #tls:
+  #  api:
+  #    disabled: false
+  #    internal:
+  #      secretName: cert-internal-svc
+  #    public:
+  #      secretName: cert-public-svc
+  #  caBundleSecretName: combined-ca-bundle
